@@ -3,154 +3,946 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kauan Kelvin | Desenvolvedor</title>
+    <title>Kauan Kelvin | DEV_GAMER</title>
     <style>
         :root {
-            --primary: #2b2d42;
-            --secondary: #8d99ae;
-            --accent: #ef233c;
-            --light: #edf2f4;
-            --dark: #1a1a1a;
-            --font-mono: 'Fira Code', monospace;
-            --font-sans: 'Inter', sans-serif;
+            --primary: #6B5AED;
+            --secondary: #FF6B35;
+            --dark: #0F0F1A;
+            --darker: #0A0A12;
+            --light: #F8F9FA;
+            --gray: #ADB5BD;
+            --success: #4BB543;
+            --warning: #FFD43B;
+            --error: #FF3333;
+            --info: #4DABF7;
+            
+            --font-base: 'Inter', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+            --font-display: 'Rajdhani', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: var(--font-sans);
+            font-family: var(--font-base);
+            background-color: var(--darker);
+            color: var(--light);
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            max-width: 800px;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 26, 0.9);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(107, 90, 237, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--gray);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-light);
+        }
+        
+        /* Main Content */
+        .main {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--secondary);
-            padding-bottom: 1rem;
+        /* Terminal Section */
+        .terminal-section {
+            background: rgba(10, 10, 18, 0.8);
+            border-radius: 8px;
+            border: 1px solid rgba(107, 90, 237, 0.3);
+            margin: 2rem 0;
+            overflow: hidden;
         }
         
-        h1, h2, h3 {
+        .terminal-header {
+            background: rgba(26, 26, 46, 0.9);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+        }
+        
+        .terminal-controls {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .close { background: #ff5f56; }
+        .minimize { background: #ffbd2e; }
+        .maximize { background: #27c93f; }
+        
+        .terminal-title {
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
             font-family: var(--font-mono);
-            font-weight: 400;
         }
         
-        h1 {
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            color: var(--primary-light);
+            line-height: 1.6;
+        }
+        
+        .prompt {
             color: var(--primary);
+        }
+        
+        .command {
+            color: var(--info);
+        }
+        
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Skills Sections */
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .section-subtitle {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-card {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(107, 90, 237, 0.2);
+        }
+        
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-icon {
+            font-size: 2rem;
+        }
+        
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .skill-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
             margin-bottom: 0.5rem;
         }
         
-        .subtitle {
-            color: var(--secondary);
-            font-style: italic;
+        .skill-meter {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            overflow: hidden;
         }
         
-        section {
-            margin-bottom: 3rem;
-        }
-        
-        .philosophy {
-            background-color: white;
-            padding: 1.5rem;
-            border-left: 4px solid var(--accent);
-            margin: 2rem 0;
-        }
-        
-        .current {
-            background-color: rgba(141, 153, 174, 0.1);
-            padding: 1rem;
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 4px;
         }
         
-        footer {
+        /* Game Dev Section */
+        .game-catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .game-cartridge {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .game-cartridge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+        }
+        
+        .cartridge-label {
+            background: rgba(15, 15, 26, 0.8);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .game-cartridge:hover .game-icon {
+            transform: scale(1.1);
+        }
+        
+        .game-platform {
+            background: rgba(255, 107, 53, 0.2);
+            color: var(--primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            text-align: center;
+        }
+        
+        .game-details {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        
+        .game-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        
+        .game-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+        
+        .game-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+            font-family: var(--font-mono);
+        }
+        
+        .status-badge {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .status-badge.released {
+            background: rgba(39, 201, 63, 0.2);
+            color: #27c93f;
+        }
+        
+        .status-badge.in-development {
+            background: rgba(255, 189, 46, 0.2);
+            color: #ffbd2e;
+        }
+        
+        .status-badge.prototype {
+            background: rgba(255, 95, 86, 0.2);
+            color: #ff5f56;
+        }
+        
+        .game-rating {
+            color: #FFBE0B;
+            letter-spacing: 2px;
+        }
+        
+        .achievements {
+            margin-top: 1.5rem;
+        }
+        
+        .achievements-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+        }
+        
+        .achievements-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .achievement-badge {
+            background: rgba(107, 90, 237, 0.2);
+            color: var(--primary-light);
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(107, 90, 237, 0.3);
+        }
+        
+        .game-button {
+            margin-top: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .game-button:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: rgba(15, 15, 26, 0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-button {
+            background: rgba(26, 26, 46, 0.7);
+            border: 1px solid rgba(107, 90, 237, 0.3);
+            color: var(--light);
+            padding: 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .contact-button:hover {
+            background: rgba(107, 90, 237, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            padding: 2rem;
             text-align: center;
             margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--secondary);
+            border-top: 1px solid rgba(107, 90, 237, 0.2);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .social-link {
+            color: var(--gray);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            color: var(--gray);
             font-size: 0.9rem;
-            color: var(--secondary);
+            margin-top: 1rem;
         }
         
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--accent);
-        }
-        
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .skills-grid, .game-catalog {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-cartridge {
+                flex-direction: column;
+            }
+            
+            .cartridge-label {
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 1rem;
+                padding: 1rem;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .game-icon {
+                font-size: 2.5rem;
+                margin-bottom: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Kauan Kelvin</h1>
-        <p class="subtitle">Desenvolvedor | Solucionador de problemas</p>
-    </header>
-    
-    <section>
-        <p>Olá, eu sou Kauan. Gosto de código que funciona em silêncio — como um relógio de bolso bem ajustado.</p>
-        
-        <div class="philosophy">
-            <p>Minha filosofia:</p>
-            <p>"Bom código é como poesia — cada linha tem seu peso, cada espaço seu propósito."</p>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span>DEV_GAMER</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">🏠 Home</a>
+                <a href="#bio" class="nav-link">👾 Bio Terminal</a>
+                <a href="#backend" class="nav-link">⚙️ Back-end</a>
+                <a href="#frontend" class="nav-link">🎨 Front-end</a>
+                <a href="#gamedev" class="nav-link">🕹️ Projetos</a>
+                <a href="#contact" class="nav-link">📡 Contato</a>
+                <a href="#" class="nav-link">🌓</a>
+            </div>
         </div>
-    </section>
+    </nav>
     
-    <section>
-        <h2>O que eu faço?</h2>
-        <p>Transformo problemas complexos em soluções simples. Sem firula — apenas o que funciona, e funciona bem.</p>
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="container">
+            <div class="terminal-section">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <div class="control close"></div>
+                        <div class="control minimize"></div>
+                        <div class="control maximize"></div>
+                    </div>
+                    <div class="terminal-title">bio_terminal.exe</div>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="prompt">></span> Bem-vindo ao meu universo digital!</p>
+                    <p><span class="prompt">></span> Sou um desenvolvedor full-stack com paixão por games.</p>
+                    <p><span class="prompt">></span> Minha jornada começou modificando jogos em Flash aos 12 anos.</p>
+                    <p><span class="prompt">></span> Hoje construo experiências web imersivas.</p>
+                    <br>
+                    <p><span class="prompt">></span> Habilidades principais:</p>
+                    <p><span class="prompt">></span> • Back-end: Node.js, Python, Java</p>
+                    <p><span class="prompt">></span> • Front-end: React, TypeScript</p>
+                    <p><span class="prompt">></span> • Game Dev: Unity, C#</p>
+                    <p><span class="prompt">></span> • Modelagem 3D: Blender</p>
+                    <p><span class="prompt">></span> <span class="cursor">█</span></p>
+                </div>
+            </div>
+        </section>
         
-        <div class="current">
-            <h3>Atualmente:</h3>
-            <ul>
-                <li>Aprendendo JavaScript e React no meu próprio ritmo</li>
-                <li>Refatorando um sistema legado com cuidado</li>
-                <li>Lendo sobre clean architecture (e aplicando aos poucos)</li>
-            </ul>
+        <!-- Back-end Section -->
+        <section id="backend" class="container">
+            <h2 class="section-title">⚙️ Back-end Development</h2>
+            <p class="section-subtitle">Construindo a espinha dorsal robusta das aplicações</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">⚙️</div>
+                        <div class="skill-name">Node.js</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Projetos: 12</span>
+                        <span>Nível: 90%</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🐍</div>
+                        <div class="skill-name">Python</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Projetos: 8</span>
+                        <span>Nível: 85%</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">☕</div>
+                        <div class="skill-name">Java</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Projetos: 5</span>
+                        <span>Nível: 80%</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 80%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🗃️</div>
+                        <div class="skill-name">SQL/NoSQL</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Projetos: 15</span>
+                        <span>Nível: 88%</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 88%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🔗</div>
+                        <div class="skill-name">APIs REST/GraphQL</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Projetos: 20</span>
+                        <span>Nível: 92%</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 92%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🐳</div>
+                        <div class="skill-name">Docker</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Projetos: 10</span>
+                        <span>Nível: 85%</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terminal-section" style="margin-top: 2rem;">
+                <div class="terminal-header">
+                    <div class="terminal-title">server_example.js</div>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="command">const</span> server = <span class="command">require</span>(<span class="prompt">'express'</span>)();</p>
+                    <p><span class="command">const</span> PORT = process.env.PORT || 3000;</p>
+                    <br>
+                    <p>server.get(<span class="prompt">'/'</span>, (req, res) => {</p>
+                    <p>  res.json({ </p>
+                    <p>    status: <span class="prompt">'online'</span>,</p>
+                    <p>    message: <span class="prompt">'Server running optimally'</span> </p>
+                    <p>  });</p>
+                    <p>});</p>
+                    <br>
+                    <p>server.listen(PORT, () => {</p>
+                    <p>  console.log(<span class="prompt">`Server listening on port ${PORT}`</span>);</p>
+                    <p>});</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Front-end Section -->
+        <section id="frontend" class="container">
+            <h2 class="section-title">🎨 Front-end Development</h2>
+            <p class="section-subtitle">Crio interfaces intuitivas e responsivas que encantam usuários. Foco em performance, acessibilidade e experiência do usuário.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">⚛️</div>
+                        <div class="skill-name">React</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Nível: Avançado</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🖖</div>
+                        <div class="skill-name">Vue.js</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Nível: Intermediário</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 70%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">📄</div>
+                        <div class="skill-name">HTML/CSS</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Nível: Especialista</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 95%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">📜</div>
+                        <div class="skill-name">JavaScript/TypeScript</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Nível: Avançado</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🎨</div>
+                        <div class="skill-name">UI/UX Design</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Nível: Intermediário</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 65%;"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">📱</div>
+                        <div class="skill-name">Responsive Design</div>
+                    </div>
+                    <div class="skill-meta">
+                        <span>Nível: Avançado</span>
+                    </div>
+                    <div class="skill-meter">
+                        <div class="skill-level" style="width: 88%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Game Dev Section -->
+        <section id="gamedev" class="container">
+            <h2 class="section-title">🎮 Game Development</h2>
+            <p class="section-subtitle">Onde código e criatividade se encontram para criar mundos</p>
+            
+            <div class="game-catalog">
+                <div class="game-cartridge">
+                    <div class="cartridge-label">
+                        <div class="game-icon">🚀</div>
+                        <div class="game-platform">Unity</div>
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Cosmic Runner 2D</h3>
+                        <p class="game-description">Jogo de plataforma com mecânicas únicas de gravidade</p>
+                        
+                        <div class="game-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Status</span>
+                                <span class="status-badge released">Lançado</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Lançamento</span>
+                                <span>2022-03-15</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Avaliação</span>
+                                <span class="game-rating">★★★★☆</span>
+                            </div>
+                        </div>
+                        
+                        <div class="achievements">
+                            <span class="achievements-label">Conquistas:</span>
+                            <div class="achievements-badges">
+                                <span class="achievement-badge">10k downloads</span>
+                                <span class="achievement-badge">Avaliação 4.5/5</span>
+                                <span class="achievement-badge">Indie Game Award 2022</span>
+                            </div>
+                        </div>
+                        
+                        <button class="game-button">
+                            Ver Detalhes
+                            <span>🡢</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="game-cartridge">
+                    <div class="cartridge-label">
+                        <div class="game-icon">👓</div>
+                        <div class="game-platform">Unreal Engine</div>
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Neon VR Experience</h3>
+                        <p class="game-description">Experiência imersiva em realidade virtual com elementos puzzle</p>
+                        
+                        <div class="game-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Status</span>
+                                <span class="status-badge in-development">Em desenvolvimento</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Lançamento</span>
+                                <span>2023-12-01</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Avaliação</span>
+                                <span class="game-rating">★★★☆☆</span>
+                            </div>
+                        </div>
+                        
+                        <div class="achievements">
+                            <span class="achievements-label">Conquistas:</span>
+                            <div class="achievements-badges">
+                                <span class="achievement-badge">Demo disponível</span>
+                                <span class="achievement-badge">Finalista VR Challenge</span>
+                            </div>
+                        </div>
+                        
+                        <button class="game-button">
+                            Ver Detalhes
+                            <span>🡢</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="game-cartridge">
+                    <div class="cartridge-label">
+                        <div class="game-icon">📱</div>
+                        <div class="game-platform">Godot</div>
+                    </div>
+                    <div class="game-details">
+                        <h3 class="game-title">Pixel Quest Mobile</h3>
+                        <p class="game-description">RPG mobile com gráficos pixel art e batalhas por turnos</p>
+                        
+                        <div class="game-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Status</span>
+                                <span class="status-badge prototype">Protótipo</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Lançamento</span>
+                                <span>2024-Q2</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Avaliação</span>
+                                <span class="game-rating">★★☆☆☆</span>
+                            </div>
+                        </div>
+                        
+                        <div class="achievements">
+                            <span class="achievements-label">Conquistas:</span>
+                            <div class="achievements-badges">
+                                <span class="achievement-badge">Prototype Week 2023</span>
+                            </div>
+                        </div>
+                        
+                        <button class="game-button">
+                            Ver Detalhes
+                            <span>🡢</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terminal-section" style="margin-top: 2rem;">
+                <div class="terminal-header">
+                    <div class="terminal-title">game_dev_portfolio.log</div>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="prompt">.</span>_ game_dev_portfolio.loaded</p>
+                    <p><span class="prompt">.</span>_ total_projects: 3</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3D Modeling Section -->
+        <section class="container">
+            <h2 class="section-title">🖌️ Modelagem 3D</h2>
+            <p class="section-subtitle">Trago objetos e personagens à vida com modelagem detalhada e texturização realista. Experiência em pipelines para jogos e animação.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">👤</div>
+                        <div class="skill-name">Personagens</div>
+                    </div>
+                    <p class="skill-meta">Software: Blender</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🏙️</div>
+                        <div class="skill-name">Ambientes</div>
+                    </div>
+                    <p class="skill-meta">Software: Maya</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🛠️</div>
+                        <div class="skill-name">Props</div>
+                    </div>
+                    <p class="skill-meta">Software: ZBrush</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="game-button">
+                    Portfólio 3D
+                    <span>🡢</span>
+                </button>
+                <p style="margin-top: 1rem; color: var(--gray);">Confira meus trabalhos no ArtStation e no Sketchfab.</p>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="container">
+            <div class="contact-section">
+                <h2 class="section-title">💬 Contato</h2>
+                <p class="section-subtitle">O que você gostaria de fazer?</p>
+                
+                <div style="background: rgba(26, 26, 46, 0.7); padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+                    <p style="color: var(--gray); font-family: var(--font-mono); margin-bottom: 0.5rem;">Digite sua mensagem aqui...</p>
+                    <div style="height: 100px; background: rgba(10, 10, 18, 0.5); border: 1px dashed var(--gray); border-radius: 4px;"></div>
+                </div>
+                
+                <div class="contact-options">
+                    <button class="contact-button">Enviar mensagem</button>
+                    <a href="#" class="contact-button">Ver LinkedIn</a>
+                    <button class="contact-button">Copiar email</button>
+                    <button class="contact-button" style="background: rgba(255, 95, 86, 0.1);">Cancelar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">ArtStation</a>
         </div>
-    </section>
-    
-    <section>
-        <h2>Minha abordagem</h2>
-        <p>Acredito que tecnologia deveria ser como bons móveis:</p>
-        <ul>
-            <li><strong>Útil</strong> (resolve necessidades reais)</li>
-            <li><strong>Durável</strong> (sobrevive a atualizações)</li>
-            <li><strong>Discreto</strong> (faz o trabalho sem chamar atenção)</li>
-        </ul>
-    </section>
-    
-    <section>
-        <h2>Vamos conversar sobre</h2>
-        <ul>
-            <li>A arte de simplificar sistemas</li>
-            <li>Livros técnicos que realmente ensinam algo</li>
-            <li>A proporção perfeita de café para código</li>
-        </ul>
-        
-        <p>Entre em contato: <a href="mailto:kauanhemaldo88@gmail.com">kauanhemaldo88@gmail.com</a></p>
-    </section>
-    
-    <footer>
-        <p>Este portfólio vive como código open-source — muda quando necessário</p>
-        <p>Última atualização: Primavera 2025 | Feito à mão, como código deve ser</p>
+        <p class="copyright">© 2025 Kauan Kelvin. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>
